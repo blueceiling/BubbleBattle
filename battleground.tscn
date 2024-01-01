@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dswksx7vubrox"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_4lko3"]
+[ext_resource type="Script" path="res://Sprite2D.gd" id="1_siofu"]
+[ext_resource type="Texture2D" uid="uid://cj0rc3wwv54te" path="res://bubble.png" id="2_hcpuy"]
+[ext_resource type="Texture2D" uid="uid://dl82kelwxsvjh" path="res://surface.png" id="4_s1od8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m6g10"]
+radius = 19.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_bd8ag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ih1k"]
+size = Vector2(1149, 193)
+
+[node name="battleground" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_4lko3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-8, -30)
+shape = SubResource("CircleShape2D_m6g10")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-8, -30)
+scale = Vector2(0.076, 0.076)
+texture = ExtResource("2_hcpuy")
+script = ExtResource("1_siofu")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+position = Vector2(-1.00003, 99)
+scale = Vector2(1150, 194.333)
+mesh = SubResource("QuadMesh_bd8ag")
+texture = ExtResource("4_s1od8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(-0.5, 99.5)
+shape = SubResource("RectangleShape2D_1ih1k")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
