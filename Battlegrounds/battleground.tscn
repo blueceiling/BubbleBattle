@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://70wgvap80cls"]
+
+[ext_resource type="Texture2D" uid="uid://dl82kelwxsvjh" path="res://surface.png" id="1_3i280"]
+[ext_resource type="PackedScene" uid="uid://deeew6e0krmur" path="res://Player/player.tscn" id="2_kv364"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bd8ag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ih1k"]
+size = Vector2(1149, 193)
+
+[node name="battleground" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Platform" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Platform"]
+position = Vector2(-1.00003, 99)
+scale = Vector2(1150, 194.333)
+mesh = SubResource("QuadMesh_bd8ag")
+texture = ExtResource("1_3i280")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(-0.5, 99.5)
+shape = SubResource("RectangleShape2D_1ih1k")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Player" parent="." instance=ExtResource("2_kv364")]
